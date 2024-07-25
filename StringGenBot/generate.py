@@ -34,25 +34,25 @@ import config
 
 
 
-ask_ques = "**» ᴘᴀʏʀᴏ ʜɪ ʟᴇ ʟᴇ ᴛᴇʟᴇᴛʜᴏɴ sᴇ ᴛᴇʀɪ ɢᴀᴍɴᴅ ʟᴀɢ sᴀᴋᴛɪ ʜᴇ :**"
+ask_ques = "**» merhaba ben pyogram botuyum komutlarım aşağıda :**"
 buttons_ques = [
     [
-        InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ", callback_data="pyrogram1"),
-        InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ ᴠ2", callback_data="pyrogram"),
+        InlineKeyboardButton("PYOGRAM V1", callback_data="pyrogram1"),
+        InlineKeyboardButton("PYOGRAM V2", callback_data="pyrogram"),
     ],
     [
-        InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
+        InlineKeyboardButton("TELEFON", callback_data="telethon"),
     ],
     [
-        InlineKeyboardButton("ᴩʏʀᴏɢʀᴀᴍ ʙᴏᴛ", callback_data="pyrogram_bot"),
-        InlineKeyboardButton("ᴛᴇʟᴇᴛʜᴏɴ ʙᴏᴛ", callback_data="telethon_bot"),
+        InlineKeyboardButton("PYOGRAM BOTU", callback_data="pyrogram_bot"),
+        InlineKeyboardButton("TELEFON BOTU", callback_data="telethon_bot"),
     ],
 ]
 
 
 gen_button = [
     [
-        InlineKeyboardButton(text="Gᴇɴʀᴀᴛᴇ sᴇssᴏɴ", callback_data="generate")
+        InlineKeyboardButton(text="OTURUM ULUŞTUR", callback_data="generate")
     ]
 ]
 
@@ -66,16 +66,16 @@ async def main(_, msg):
 
 async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: bool = False, is_bot: bool = False):
     if telethon:
-        ty = "ᴛᴇʟᴇᴛʜᴏɴ"
+        ty = "TELEFON"
     else:
-        ty = "ᴩʏʀᴏɢʀᴀᴍ"
+        ty = "PYOGRAM"
         if not old_pyro:
             ty += " ᴠ2"
     if is_bot:
-        ty += " ʙᴏᴛ"
-    await msg.reply(f"» ᴛʀʏɪɴɢ ᴛᴏ sᴛᴀʀᴛ **{ty}** sᴇssɪᴏɴ ɢᴇɴᴇʀᴀᴛᴏʀ...")
+        ty += "BOT"
+    await msg.reply(f"» başlamaya çalışıyorum **{ty}** OTURUM ULUŞTURULUYOR...")
     user_id = msg.chat.id
-    api_id_msg = await bot.ask(user_id, "ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ᴀᴩɪ_ɪᴅ** ᴛᴏ ᴩʀᴏᴄᴇᴇᴅ.\n\nᴄʟɪᴄᴋ ᴏɴ /skip ғᴏʀ ᴜsɪɴɢ ʙᴏᴛ's ᴀᴘɪ.", filters=filters.text)
+    api_id_msg = await bot.ask(user_id, "lütfen gönder **APİ_İD** Devam etmek için.\n\nTıklamak /skip botun API'sini kullanmak için.", filters=filters.text)
     if await cancelled(api_id_msg):
         return
     if api_id_msg.text == "/skip":
@@ -85,16 +85,16 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         try:
             api_id = int(api_id_msg.text)
         except ValueError:
-            await api_id_msg.reply("**ᴀᴩɪ_ɪᴅ** ᴍᴜsᴛ ʙᴇ ᴀɴ ɪɴᴛᴇɢᴇʀ, sᴛᴀʀᴛ ɢᴇɴᴇʀᴀᴛɪɴɢ ʏᴏᴜʀ sᴇssɪᴏɴ ᴀɢᴀɪɴ.", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+            await api_id_msg.reply("**APİ_İD** LUTFEN APİ İD NUMARASINI ATIN.", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
             return
-        api_hash_msg = await bot.ask(user_id, "» ɴᴏᴡ ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ᴀᴩɪ_ʜᴀsʜ** ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ", filters=filters.text)
+        api_hash_msg = await bot.ask(user_id, "» LÜTFEN APİ HASH NUMARASINİ ATIN **ᴀᴩɪ_ʜᴀsʜ** BAĞLANIN", filters=filters.text)
         if await cancelled(api_hash_msg):
             return
         api_hash = api_hash_msg.text
     if not is_bot:
-        t = "» ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ᴩʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴡɪᴛʜ ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ ғᴏʀ ᴡʜɪᴄʜ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ sᴇssɪᴏɴ. \nᴇxᴀᴍᴩʟᴇ : `+910000000000`'"
+        t = "» lütfen gönder **telefon numaranızı gönderin** oturumu oluşturmak istediğiniz ülke kodu. \nörnek : `+910000000000`'"
     else:
-        t = "ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ʙᴏᴛ_ᴛᴏᴋᴇɴ** ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ.\nᴇxᴀᴍᴩʟᴇ : `5432198765:abcdanonymousterabaaplol`'"
+        t = "lütfen gönderin**botun tokeni** baglanmak için.\nörnek : `5432198765:abcdanonymousterabaaplol`'"
     phone_number_msg = await bot.ask(user_id, t, filters=filters.text)
     if await cancelled(phone_number_msg):
         return
