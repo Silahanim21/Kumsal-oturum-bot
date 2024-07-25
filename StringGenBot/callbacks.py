@@ -21,7 +21,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
                 await callback_query.answer()
                 await generate_session(bot, callback_query.message, old_pyro=True)
             elif query == "pyrogram_bot":
-                await callback_query.answer("» ᴛʜᴇ sᴇssɪᴏɴ ɢᴇɴᴇʀᴀᴛᴇᴅ ᴡɪʟʟ ʙᴇ ᴏғ ᴩʏʀᴏɢʀᴀᴍ ᴠ2.", show_alert=True)
+                await callback_query.answer("» Oluşturulan oturum pyrogram v2 olacaktır.", show_alert=True)
                 await generate_session(bot, callback_query.message, is_bot=True)
             elif query == "telethon_bot":
                 await callback_query.answer()
@@ -35,7 +35,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
             await callback_query.message.reply(ERROR_MESSAGE.format(str(e)))
 
 
-ERROR_MESSAGE = "ᴡᴛғ ! sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ. \n\n**ᴇʀʀᴏʀ** : {} " \
-            "\n\n**ᴩʟᴇᴀsᴇ ғᴏʀᴡᴀʀᴅ ᴛʜɪs ᴍᴇssᴀɢᴇ ᴛᴏ @BRANDED_PAID_CC**, ɪғ ᴛʜɪs ᴍᴇssᴀɢᴇ " \
-            "ᴅᴏᴇsɴ'ᴛ ᴄᴏɴᴛᴀɪɴ ᴀɴʏ sᴇɴsɪᴛɪᴠᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ " \
-            "ʙᴇᴄᴀᴜsᴇ ᴛʜɪs ᴇʀʀᴏʀ ɪs **ɴᴏᴛ ʟᴏɢɢᴇᴅ ʙʏ ᴛʜᴇ ʙᴏᴛ** !"
+ERROR_MESSAGE = "o ne lan !  bir şeyler yanlış gitti \n\n**hata** : {} " \
+            "\n\n**Lütfen bu mesajı şu adrese iletin :@kumsalmuzikk**, eğer bu mesaj " \
+            "herhangi bir hassas bilgi içermiyor " \
+            "çünkü bu hata **Bot tarafından oturum açılmadı** !"
